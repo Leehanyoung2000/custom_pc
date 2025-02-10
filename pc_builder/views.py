@@ -44,8 +44,8 @@ class SearchProductAPIView(APIView):
 
         url = f"https://openapi.naver.com/v1/search/shop.json?query={query}&sort=sim&display=20"
         headers = {
-            "X-Naver-Client-Id": "kNlrAWM8LArTHke9worO",
-            "X-Naver-Client-Secret": "YCH6Aw3zeE",
+            "X-Naver-Client-Id": "",
+            "X-Naver-Client-Secret": "",
         }
 
         try:
