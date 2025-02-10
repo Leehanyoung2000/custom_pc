@@ -1,0 +1,40 @@
+<!-- templates/cart.html -->
+{% extends 'pc_builder_base/base.html' %}
+
+{% block content %}
+    <h1 class="text-center mb-4">장바구니</h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>제품명</th>
+                    <th>수량</th>
+                    <th>가격</th>
+                    <th>총액</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Intel Core i7</td>
+                    <td>1</td>
+                    <td>₩300,000</td>
+                    <td>₩300,000</td>
+                    <td><button class="btn btn-danger">삭제</button></td>
+                </tr>
+                <tr>
+                    <td>NVIDIA GeForce RTX 3080</td>
+                    <td>1</td>
+                    <td>₩1,500,000</td>
+                    <td>₩1,500,000</td>
+                    <td><button class="btn btn-danger">삭제</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4 class="text-end">총액: ₩1,800,000</h4>
+
+        <a href="/checkout/" class="btn btn-success w-100">결제하기</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,59 @@
+<!-- templates/products.html -->
+{% extends 'pc_builder_base/base.html' %}
+
+{% block content %}
+    <h1 class="text-center mb-4">PC 부품 목록</h1>
+    <a href="{% url 'create' %}">상품 등록</a>
+    <div class="row">
+        {% for product in products %}
+        <!-- CPU 부품 예시 -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{product.image1.url}}" class="card-img-top" alt="CPU" style="height: 200px; width: auto;">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.category}}</h5>
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.description}}</p>
+                    <p class="card-text"><strong>가격:</strong> {{product.price}}</p>
+                    <p class="card-text"><strong>수량:</strong> {{product.stock}}</p>
+                    <a href="{% url 'detail' product.id %}" class="btn btn-primary">상세 보기</a>
+                    <button class="btn btn-success">장바구니에 추가</button>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+        <!-- 페이지네이션 -->
+        <nav>
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">처음</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">이전</a>
+                    </li>
+                {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <li class="page-item active" aria-current="page">
+                            <span class="page-link">{{ num }}</span>
+                        </li>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">다음</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">마지막</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+
+        
+{% endblock %}

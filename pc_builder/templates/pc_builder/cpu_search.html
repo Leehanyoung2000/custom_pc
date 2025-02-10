@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU 검색 결과</title>
+</head>
+<body>
+    <h1>검색 결과</h1>
+    
+    {% if items %}
+        <ul>
+            {% for item in items %}
+                <li>
+                    <h2>{{ item.title|safe }}</h2>
+                    <a href="{{ item.link }}" target="_blank">
+                        <img src="{{ item.image }}" alt="CPU 이미지" style="max-width: 200px;">
+                    </a>
+                    <p>최저가: {{ item.lprice }}원</p>
+                    <p>판매처: {{ item.mallName }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>검색 결과가 없습니다.</p>
+    {% endif %}
+</body>
+</html>

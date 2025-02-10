@@ -1,0 +1,19 @@
+<!-- templates/product_detail.html -->
+{% extends 'pc_builder_base/base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{product.image1.url}}" class="img-fluid" alt="Product Image">
+        </div>
+        <div class="col-md-6">
+            <h1 class="mb-4">{{product.name}}</h1>
+            <p><strong>설명:</strong> {{product.description}}</p>
+            <p><strong>가격:</strong> {{product.price}}</p>
+            <p><strong>남은수량:{{product.stock}}</strong></p>
+            
+            <button class="btn btn-primary">장바구니에 추가</button>
+            <a href="/cart/" class="btn btn-success">장바구니 보기</a>
+        </div>
+    </div>
+{% endblock %}
